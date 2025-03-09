@@ -16,13 +16,13 @@ function App() {
 
       {/* Aside: Hidden below lg using hideBelow */}
       <Stack hideBelow="lg">
-        <GridItem area="aside" bgColor="gold" p={4}>
+        <GridItem area="aside" p={4}>
           Aside
         </GridItem>
       </Stack>
 
       {/* Main: visible on all screen sizes */}
-      <GridItem area="main" bgColor="dodgerblue" p={4}>
+      <GridItem area="main" p={4}>
         Main
       </GridItem>
     </Grid>
