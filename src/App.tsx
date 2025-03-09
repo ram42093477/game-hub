@@ -1,4 +1,5 @@
 import { Grid, GridItem, Stack, Text } from "@chakra-ui/react";
+import NavBar from "./comp/NavBar";
 
 function App() {
   return (
@@ -9,8 +10,8 @@ function App() {
       }}
     >
       {/* Nav: visible on all screen sizes */}
-      <GridItem area="nav" bgColor="coral" p={4}>
-        Nav
+      <GridItem area="nav" p={4}>
+        <NavBar></NavBar>
       </GridItem>
 
       {/* Aside: Hidden below lg using hideBelow */}
