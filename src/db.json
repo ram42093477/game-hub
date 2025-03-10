@@ -3,27 +3,47 @@
       {
         "id": 1,
         "name": "The Legend of Zelda: Breath of the Wild",
-        "bimage": "https://example.com/zelda.jpg"
+        "bimage": "https://example.com/zelda.jpg",
+        "pplat": [
+          { "platform": { "id": 1, "name": "Nintendo Switch", "slug": "switch" } }
+        ]
       },
       {
         "id": 2,
         "name": "Elden Ring",
-        "bimage": "https://example.com/eldenring.jpg"
+        "bimage": "https://example.com/eldenring.jpg",
+        "pplat": [
+          { "platform": { "id": 2, "name": "PlayStation 5", "slug": "ps5" } },
+          { "platform": { "id": 3, "name": "Xbox Series X", "slug": "xbox-series-x" } },
+          { "platform": { "id": 4, "name": "PC", "slug": "pc" } }
+        ]
       },
       {
         "id": 3,
         "name": "God of War Ragnarok",
-        "bimage": "https://example.com/godofwar.jpg"
+        "bimage": "https://example.com/godofwar.jpg",
+        "pplat": [
+          { "platform": { "id": 2, "name": "PlayStation 5", "slug": "ps5" } },
+          { "platform": { "id": 5, "name": "PlayStation 4", "slug": "ps4" } }
+        ]
       },
       {
         "id": 4,
         "name": "Cyberpunk 2077",
-        "bimage": "https://example.com/cyberpunk.jpg"
+        "bimage": "https://example.com/cyberpunk.jpg",
+        "pplat": [
+          { "platform": { "id": 4, "name": "PC", "slug": "pc" } },
+          { "platform": { "id": 3, "name": "Xbox Series X", "slug": "xbox-series-x" } },
+          { "platform": { "id": 2, "name": "PlayStation 5", "slug": "ps5" } }
+        ]
       },
       {
         "id": 5,
         "name": "Temple Run",
-        "bimage": "https://example.com/templerun.jpg"
+        "bimage": "https://example.com/templerun.jpg",
+        "pplat": [
+          { "platform": { "id": 6, "name": "Mobile", "slug": "mobile" } }
+        ]
       }
     ]
   }

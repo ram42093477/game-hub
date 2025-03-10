@@ -1,11 +1,17 @@
 import { useState, useEffect } from "react";
-
-export interface Game {
-  id: number;
-  name: string;
-  bimage:string;
-}
-
+export interface Platform {
+    id: number;
+    name: string;
+    slug: string;
+  }
+  
+  export interface Game {
+    id: number;
+    name: string;
+    bimage: string;
+    pplat: { platform: Platform }[]; // ✅ This matches `PlatFormIconList` prop
+  }
+  
 const useGames = () => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
