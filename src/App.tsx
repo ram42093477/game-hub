@@ -1,5 +1,6 @@
 import { Grid, GridItem, Stack, Text } from "@chakra-ui/react";
 import NavBar from "./comp/NavBar";
+import GameGrid from "./comp/GameGrid";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
 
       {/* Main: visible on all screen sizes */}
       <GridItem area="main" p={4}>
-        Main
+        <GameGrid></GameGrid>
       </GridItem>
     </Grid>
   );
