@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useGames from "../hooks/UseGames";
+import { SimpleGrid } from "@chakra-ui/react";
+import GameCard from "./GameCard";
 const API_URL = "http://localhost:3872/games"; // ✅ Corrected API URL
 
 function GameGrid() {
@@ -7,13 +9,16 @@ function GameGrid() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <ul>
+    <SimpleGrid
+      columns={{ sm: 1, md: 2, lg: 3, xl: 3 }}
+      spacing={10}
+      padding={10}
+      borderRadius={10}
+    >
       {games.map((game) => (
-        <li key={game.id}>
-          {game.id} - {game.name}
-        </li>
+        <GameCard key={game.id} game={game} />
       ))}
-    </ul>
+    </SimpleGrid>
   );
 }
 

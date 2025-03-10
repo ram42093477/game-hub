@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 
-interface Game {
+export interface Game {
   id: number;
   name: string;
+  bimage:string;
 }
 
 const useGames = () => {

@@ -1,10 +1,30 @@
 {
     "games": [
-      { "id": 1, "name": "The Legend of Zelda: Breath of the Wild" },
-      { "id": 2, "name": "Elden Ring" },
-      { "id": 3, "name": "God of War Ragnarok" },
-      { "id": 4, "name": "Cyberpunk 2077" },
-      { "id": 5, "name": "temple run" }
+      {
+        "id": 1,
+        "name": "The Legend of Zelda: Breath of the Wild",
+        "bimage": "https://example.com/zelda.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Elden Ring",
+        "bimage": "https://example.com/eldenring.jpg"
+      },
+      {
+        "id": 3,
+        "name": "God of War Ragnarok",
+        "bimage": "https://example.com/godofwar.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Cyberpunk 2077",
+        "bimage": "https://example.com/cyberpunk.jpg"
+      },
+      {
+        "id": 5,
+        "name": "Temple Run",
+        "bimage": "https://example.com/templerun.jpg"
+      }
     ]
   }
   
