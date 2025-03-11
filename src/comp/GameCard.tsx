@@ -3,6 +3,7 @@ import { Game } from "../hooks/UseGames";
 import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react";
 import PlatFormIconList from "./PlatFormIconList";
 import CriticScore from "./CriticScore";
+import getCroppedImageUrl from "../services/img-url";
 
 interface Props {
   game: Game;
@@ -11,7 +12,7 @@ interface Props {
 function GameCard({ game }: Props) {
   return (
     <Card>
-      <Image src={game.bimage} alt={game.name} />
+      <Image src={getCroppedImageUrl(game.bimage)} alt={game.name} />
       <CardBody>
         <Heading fontSize="lg">{game.name}</Heading>
         {/* ✅ Pass `game.pplat` directly */}
