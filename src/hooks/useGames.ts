@@ -10,6 +10,7 @@ export interface Platform {
     name: string;
     bimage: string;
     pplat: { platform: Platform }[]; // ✅ This matches `PlatFormIconList` prop
+    metacritic:number;
   }
   
 const useGames = () => {

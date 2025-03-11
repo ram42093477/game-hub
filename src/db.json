@@ -6,7 +6,8 @@
         "bimage": "https://example.com/zelda.jpg",
         "pplat": [
           { "platform": { "id": 1, "name": "Nintendo Switch", "slug": "switch" } }
-        ]
+        ],
+        "metacritic": 97
       },
       {
         "id": 2,
@@ -16,7 +17,8 @@
           { "platform": { "id": 2, "name": "PlayStation 5", "slug": "ps5" } },
           { "platform": { "id": 3, "name": "Xbox Series X", "slug": "xbox-series-x" } },
           { "platform": { "id": 4, "name": "PC", "slug": "pc" } }
-        ]
+        ],
+        "metacritic": 50
       },
       {
         "id": 3,
@@ -25,7 +27,8 @@
         "pplat": [
           { "platform": { "id": 2, "name": "PlayStation 5", "slug": "ps5" } },
           { "platform": { "id": 5, "name": "PlayStation 4", "slug": "ps4" } }
-        ]
+        ],
+        "metacritic": 94
       },
       {
         "id": 4,
@@ -35,7 +38,8 @@
           { "platform": { "id": 4, "name": "PC", "slug": "pc" } },
           { "platform": { "id": 3, "name": "Xbox Series X", "slug": "xbox-series-x" } },
           { "platform": { "id": 2, "name": "PlayStation 5", "slug": "ps5" } }
-        ]
+        ],
+        "metacritic": 86
       },
       {
         "id": 5,
@@ -43,7 +47,8 @@
         "bimage": "https://example.com/templerun.jpg",
         "pplat": [
           { "platform": { "id": 6, "name": "Mobile", "slug": "mobile" } }
-        ]
+        ],
+        "metacritic": 79
       }
     ]
   }
