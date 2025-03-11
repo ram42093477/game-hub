@@ -1,8 +1,26 @@
-import { Grid, GridItem, Stack, Text } from "@chakra-ui/react";
+import { Grid, GridItem, Stack, Spinner, Flex } from "@chakra-ui/react";
 import NavBar from "./comp/NavBar";
 import GameGrid from "./comp/GameGrid";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate an API delay (optional)
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // 2-second delay
+  }, []);
+
+  if (isLoading) {
+    return (
+      <Flex height="100vh" justify="center" align="center">
+        <Spinner size="xl" color="blue.500" />
+      </Flex>
+    );
+  }
+
   return (
     <Grid
       templateAreas={{
@@ -12,7 +30,7 @@ function App() {
     >
       {/* Nav: visible on all screen sizes */}
       <GridItem area="nav" p={4}>
-        <NavBar></NavBar>
+        <NavBar />
       </GridItem>
 
       {/* Aside: Hidden below lg using hideBelow */}
@@ -24,7 +42,7 @@ function App() {
 
       {/* Main: visible on all screen sizes */}
       <GridItem area="main" p={4}>
-        <GameGrid></GameGrid>
+        <GameGrid />
       </GridItem>
     </Grid>
   );
