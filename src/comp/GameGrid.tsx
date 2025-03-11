@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import useGames from "../hooks/UseGames";
 import { SimpleGrid } from "@chakra-ui/react";
 import GameCard from "./GameCard";
 import GameSkeleton from "./GameSkeleton";
 import GameCardContainer from "./GameCardContainer";
-const API_URL = "http://localhost:3872/games"; // ✅ Corrected API URL
-function GameGrid() {
+
+const GameGrid = () => {
   const { error, games, isLoading } = useGames();
   const Skeletons = [1, 2, 3, 4, 5, 6];
+
   useEffect(() => {
     console.log("isLoading:", isLoading);
-  }, [isLoading]); // ✅ Logs every time `isLoading` changes
+  }, [isLoading]);
+
   if (error) return <p>Error: {error}</p>;
 
   return (
@@ -22,17 +24,18 @@ function GameGrid() {
     >
       {isLoading &&
         Skeletons.map((sk) => (
-          <GameCardContainer>
-            <GameSkeleton key={sk} />
+          <GameCardContainer key={sk}>
+            <GameSkeleton />
           </GameCardContainer>
         ))}
+
       {games.map((game) => (
-        <GameCardContainer>
-          <GameCard key={game.id} game={game} />
+        <GameCardContainer key={game.id}>
+          <GameCard game={game} />
         </GameCardContainer>
       ))}
     </SimpleGrid>
   );
-}
+};
 
 export default GameGrid;

@@ -2,6 +2,7 @@ import { Grid, GridItem, Stack, Spinner, Flex } from "@chakra-ui/react";
 import NavBar from "./comp/NavBar";
 import GameGrid from "./comp/GameGrid";
 import { useState, useEffect } from "react";
+import GenreList from "./comp/GenreList";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,7 +37,7 @@ function App() {
       {/* Aside: Hidden below lg using hideBelow */}
       <Stack hideBelow="lg">
         <GridItem area="aside" p={4}>
-          Aside
+          <GenreList />
         </GridItem>
       </Stack>
 
