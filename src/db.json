@@ -54,12 +54,36 @@
     "genres": {
       "count": 6,
       "results": [
-        { "id": 1, "name": "Action" },
-        { "id": 2, "name": "RPG" },
-        { "id": 3, "name": "Adventure" },
-        { "id": 4, "name": "Shooter" },
-        { "id": 5, "name": "Platformer" },
-        { "id": 6, "name": "Racing" }
+        {
+          "id": 1,
+          "name": "Action",
+          "image_background": "https://example.com/action.jpg"
+        },
+        {
+          "id": 2,
+          "name": "RPG",
+          "image_background": "https://example.com/rpg.jpg"
+        },
+        {
+          "id": 3,
+          "name": "Adventure",
+          "image_background": "https://example.com/adventure.jpg"
+        },
+        {
+          "id": 4,
+          "name": "Shooter",
+          "image_background": "https://example.com/shooter.jpg"
+        },
+        {
+          "id": 5,
+          "name": "Platformer",
+          "image_background": "https://example.com/platformer.jpg"
+        },
+        {
+          "id": 6,
+          "name": "Racing",
+          "image_background": "https://example.com/racing.jpg"
+        }
       ]
     }
   }

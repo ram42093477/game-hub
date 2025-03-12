@@ -28,6 +28,10 @@ function App() {
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
       }}
+      templateColumns={{
+        base: "1fr",
+        lg: "200px 1fr",
+      }}
     >
       {/* Nav: visible on all screen sizes */}
       <GridItem area="nav" p={4}>
