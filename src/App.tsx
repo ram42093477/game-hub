@@ -3,15 +3,14 @@ import NavBar from "./comp/NavBar";
 import GameGrid from "./comp/GameGrid";
 import { useState, useEffect } from "react";
 import GenreList from "./comp/GenreList";
+import { Genres } from "./hooks/useGenres";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedGenre, setSelectedGenre] = useState<Genres | null>(null);
 
   useEffect(() => {
-    // Simulate an API delay (optional)
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000); // 2-second delay
+    setTimeout(() => setIsLoading(false), 2000);
   }, []);
 
   if (isLoading) {
@@ -33,21 +32,21 @@ function App() {
         lg: "200px 1fr",
       }}
     >
-      {/* Nav: visible on all screen sizes */}
       <GridItem area="nav" p={4}>
         <NavBar />
       </GridItem>
 
-      {/* Aside: Hidden below lg using hideBelow */}
       <Stack hideBelow="lg">
         <GridItem area="aside" p={4}>
-          <GenreList />
+          <GenreList
+            onSelectGenre={setSelectedGenre}
+            selectedGenre={selectedGenre}
+          />
         </GridItem>
       </Stack>
 
-      {/* Main: visible on all screen sizes */}
       <GridItem area="main" p={4}>
-        <GameGrid />
+        <GameGrid selectedGenre={selectedGenre} />
       </GridItem>
     </Grid>
   );
