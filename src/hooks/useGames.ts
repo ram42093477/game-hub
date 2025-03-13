@@ -1,28 +1,31 @@
 import useData from "./useData";
 import { Genres } from "./useGenres";
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
+import { Platform } from "./usePlatforms";
 
 export interface Game {
   id: number;
   name: string;
-  bimage: string;
-  pplat: { platform: Platform }[];
+  background_image: string;
+  parent_platforms: { platform: Platform }[];
   metacritic: number;
-  genre_ids: number[]; // ✅ Ensure genre IDs are included
+  genre_ids: number[];
 }
 
-const useGames = (selectedGenre: Genres | null) => {
-  const { data, error, isLoading } = useData<Game>("games"); // ✅ Get all games first
+const useGames = (selectedGenre: Genres | null, selectedPlatform: Platform | null) => {
+  const { data = [], error, isLoading } = useData<Game>("games");
 
-  // ✅ Filter games based on selectedGenre
-  const filteredGames = selectedGenre
-    ? data.filter((game) => game.genre_ids.includes(selectedGenre.id))
-    : data; // If no genre selected, show all games
+  console.log("Fetched games:", data);
+  console.log("Selected genre:", selectedGenre);
+  console.log("Selected platform:", selectedPlatform);
+
+  const filteredGames = data.filter((game) => {
+    const matchesGenre = selectedGenre ? game.genre_ids?.includes(selectedGenre.id) : true;
+    const matchesPlatform = selectedPlatform
+      ? game.parent_platforms.some((p) => p.platform.id === selectedPlatform.id)
+      : true;
+
+    return matchesGenre && matchesPlatform;
+  });
 
   return { data: filteredGames, error, isLoading };
 };

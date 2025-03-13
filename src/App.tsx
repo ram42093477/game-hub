@@ -1,13 +1,18 @@
-import { Grid, GridItem, Stack, Spinner, Flex } from "@chakra-ui/react";
+import { Grid, GridItem, Spinner, Flex } from "@chakra-ui/react";
 import NavBar from "./comp/NavBar";
 import GameGrid from "./comp/GameGrid";
 import { useState, useEffect } from "react";
 import GenreList from "./comp/GenreList";
+import PlatformSelector from "./comp/platformSelector"; // Capitalized correctly
 import { Genres } from "./hooks/useGenres";
+import { Platform } from "./hooks/usePlatforms";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedGenre, setSelectedGenre] = useState<Genres | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null
+  );
 
   useEffect(() => {
     setTimeout(() => setIsLoading(false), 2000);
@@ -36,17 +41,22 @@ function App() {
         <NavBar />
       </GridItem>
 
-      <Stack hideBelow="lg">
-        <GridItem area="aside" p={4}>
-          <GenreList
-            onSelectGenre={setSelectedGenre}
-            selectedGenre={selectedGenre}
-          />
-        </GridItem>
-      </Stack>
+      <GridItem area="aside" p={4} display={{ base: "none", lg: "block" }}>
+        <GenreList
+          onSelectGenre={setSelectedGenre}
+          selectedGenre={selectedGenre}
+        />
+      </GridItem>
 
       <GridItem area="main" p={4}>
-        <GameGrid selectedGenre={selectedGenre} />
+        <PlatformSelector
+          selectedPlatform={selectedPlatform}
+          onSelectPlatform={setSelectedPlatform}
+        />
+        <GameGrid
+          selectedGenre={selectedGenre}
+          selectedPlatform={selectedPlatform}
+        />
       </GridItem>
     </Grid>
   );

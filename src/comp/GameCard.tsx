@@ -1,5 +1,5 @@
 import React from "react";
-import { Game } from "../hooks/UseGames";
+import { Game } from "../hooks/useGames";
 import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react";
 import PlatFormIconList from "./PlatFormIconList";
 import CriticScore from "./CriticScore";
@@ -10,15 +10,20 @@ interface Props {
 }
 
 function GameCard({ game }: Props) {
+  // ✅ Extract platforms safely
+  const parentPlatforms = game.parent_platforms ?? [];
+
   return (
     <Card>
-      <Image src={getCroppedImageUrl(game.bimage)} alt={game.name} />
+      {/* ✅ Ensure correct image field is used */}
+      <Image src={getCroppedImageUrl(game.background_image)} alt={game.name} />
       <CardBody>
         <Heading fontSize="lg">{game.name}</Heading>
-        {/* ✅ Pass `game.pplat` directly */}
         <HStack justifyContent="space-between">
-          <PlatFormIconList platforms={game.pplat} />
-          <CriticScore score={game.metacritic} />
+          {/* ✅ Pass `parent_platforms` correctly */}
+          <PlatFormIconList parent_platforms={parentPlatforms} />
+          {/* ✅ Ensure metacritic score has a fallback */}
+          <CriticScore score={game.metacritic ?? 0} />
         </HStack>
       </CardBody>
     </Card>

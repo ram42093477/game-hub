@@ -1,5 +1,3 @@
-import React from "react";
-import { Platform } from "../hooks/UseGames";
 import { HStack, Icon } from "@chakra-ui/react";
 import {
   FaWindows,
@@ -12,13 +10,14 @@ import {
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
+import { Platform } from "../hooks/usePlatforms";
 
 interface Props {
-  platforms: { platform: Platform }[]; // ✅ Define platforms as an array
+  parent_platforms: { platform: Platform }[];
 }
 
-// Mapping platform slugs to icons
-const iconMap: { [key: string]: React.ElementType } = {
+// ✅ Define `iconMap` using `Record<string, React.ElementType>` to prevent formatting issues
+const iconMap: Record<string, React.ElementType> = {
   pc: FaWindows,
   ps5: FaPlaystation,
   ps4: FaPlaystation,
@@ -31,15 +30,19 @@ const iconMap: { [key: string]: React.ElementType } = {
   web: BsGlobe,
 };
 
-function PlatFormIconList({ platforms }: Props) {
+function PlatFormIconList({ parent_platforms }: Props) {
+  const platforms = parent_platforms.map((p) => p.platform);
+
+  console.log("Extracted platforms:", platforms); // ✅ Debugging log
+
   return (
     <HStack spacing={2} marginY={10}>
-      {platforms.map((plat) => (
+      {platforms.map((platform) => (
         <Icon
-          key={plat.platform.id}
-          as={iconMap[plat.platform.slug] || BsGlobe} // Default to globe icon
+          key={platform.id}
+          as={iconMap[platform.slug] || BsGlobe} // ✅ Ensure `platform.slug` exists
           boxSize={5}
-          color="gray.500" // ✅ Adds a subtle color
+          color="gray.500"
         />
       ))}
     </HStack>

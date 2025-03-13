@@ -19,7 +19,7 @@ const useData = <T,>(endpoint: string, requestConfig: RequestInit = {}, deps: an
       })
       .then((jsonData) => {
         console.log("Fetched Data:", jsonData);
-        setData(Array.isArray(jsonData) ? jsonData : jsonData.results || []); // ✅ Fix API response handling
+        setData(Array.isArray(jsonData) ? jsonData : jsonData.results || []);
       })
       .catch((err) => {
         if (err.name !== "AbortError") setError(err.message);

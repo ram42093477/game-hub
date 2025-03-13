@@ -1,95 +1,75 @@
 {
-    "games": [
-      {
-        "id": 1,
-        "name": "The Legend of Zelda: Breath of the Wild",
-        "bimage": "https://example.com/zelda.jpg",
-        "pplat": [
-          { "platform": { "id": 1, "name": "Nintendo Switch", "slug": "switch" } }
-        ],
-        "metacritic": 97,
-        "genre_ids": [3]
-      },
-      {
-        "id": 2,
-        "name": "Elden Ring",
-        "bimage": "https://example.com/eldenring.jpg",
-        "pplat": [
-          { "platform": { "id": 2, "name": "PlayStation 5", "slug": "ps5" } },
-          { "platform": { "id": 3, "name": "Xbox Series X", "slug": "xbox-series-x" } },
-          { "platform": { "id": 4, "name": "PC", "slug": "pc" } }
-        ],
-        "metacritic": 50,
-        "genre_ids": [2, 3]
-      },
-      {
-        "id": 3,
-        "name": "God of War Ragnarok",
-        "bimage": "https://example.com/godofwar.jpg",
-        "pplat": [
-          { "platform": { "id": 2, "name": "PlayStation 5", "slug": "ps5" } },
-          { "platform": { "id": 5, "name": "PlayStation 4", "slug": "ps4" } }
-        ],
-        "metacritic": 94,
-        "genre_ids": [1, 3]  
-      },
-      {
-        "id": 4,
-        "name": "Cyberpunk 2077",
-        "bimage": "https://example.com/cyberpunk.jpg",
-        "pplat": [
-          { "platform": { "id": 4, "name": "PC", "slug": "pc" } },
-          { "platform": { "id": 3, "name": "Xbox Series X", "slug": "xbox-series-x" } },
-          { "platform": { "id": 2, "name": "PlayStation 5", "slug": "ps5" } }
-        ],
-        "metacritic": 86,
-        "genre_ids": [4, 2] 
-      },
-      {
-        "id": 5,
-        "name": "Temple Run",
-        "bimage": "https://example.com/templerun.jpg",
-        "pplat": [
-          { "platform": { "id": 6, "name": "Mobile", "slug": "mobile" } }
-        ],
-        "metacritic": 79,
-        "genre_ids": [5]  
-      }
-    ],
-    "genres": {
-      "count": 6,
-      "results": [
-        {
-          "id": 1,
-          "name": "Action",
-          "image_background": "https://example.com/action.jpg"
-        },
-        {
-          "id": 2,
-          "name": "RPG",
-          "image_background": "https://example.com/rpg.jpg"
-        },
-        {
-          "id": 3,
-          "name": "Adventure",
-          "image_background": "https://example.com/adventure.jpg"
-        },
-        {
-          "id": 4,
-          "name": "Shooter",
-          "image_background": "https://example.com/shooter.jpg"
-        },
-        {
-          "id": 5,
-          "name": "Platformer",
-          "image_background": "https://example.com/platformer.jpg"
-        },
-        {
-          "id": 6,
-          "name": "Racing",
-          "image_background": "https://example.com/racing.jpg"
-        }
-      ]
+  "games": [
+    {
+      "id": 1,
+      "name": "The Legend of Zelda: Breath of the Wild",
+      "background_image": "https://example.com/zelda.jpg",
+      "parent_platforms": [
+        { "platform": { "id": 1, "name": "Nintendo Switch" } }
+      ],
+      "metacritic": 97,
+      "genre_ids": [3]
+    },
+    {
+      "id": 2,
+      "name": "Elden Ring",
+      "background_image": "https://example.com/eldenring.jpg",
+      "parent_platforms": [
+        { "platform": { "id": 2, "name": "PlayStation 5" } },
+        { "platform": { "id": 3, "name": "Xbox Series X" } },
+        { "platform": { "id": 4, "name": "PC" } }
+      ],
+      "metacritic": 50,
+      "genre_ids": [2, 3]
+    },
+    {
+      "id": 3,
+      "name": "God of War Ragnarok",
+      "background_image": "https://example.com/godofwar.jpg",
+      "parent_platforms": [
+        { "platform": { "id": 2, "name": "PlayStation 5" } },
+        { "platform": { "id": 5, "name": "PlayStation 4" } }
+      ],
+      "metacritic": 94,
+      "genre_ids": [1, 3]
+    },
+    {
+      "id": 4,
+      "name": "Cyberpunk 2077",
+      "background_image": "https://example.com/cyberpunk.jpg",
+      "parent_platforms": [
+        { "platform": { "id": 4, "name": "PC" } },
+        { "platform": { "id": 3, "name": "Xbox Series X" } },
+        { "platform": { "id": 2, "name": "PlayStation 5" } }
+      ],
+      "metacritic": 86,
+      "genre_ids": [4, 2]
+    },
+    {
+      "id": 5,
+      "name": "Temple Run",
+      "background_image": "https://example.com/templerun.jpg",
+      "parent_platforms": [
+        { "platform": { "id": 6, "name": "Mobile" } }
+      ],
+      "metacritic": 79,
+      "genre_ids": [5]
     }
-  }
-  
+  ],
+  "platforms": [
+    { "id": 1, "name": "Nintendo Switch", "slug": "switch" },
+    { "id": 2, "name": "PlayStation 5", "slug": "ps5" },
+    { "id": 3, "name": "Xbox Series X", "slug": "xbox-series-x" },
+    { "id": 4, "name": "PC", "slug": "pc" },
+    { "id": 5, "name": "PlayStation 4", "slug": "ps4" },
+    { "id": 6, "name": "Mobile", "slug": "mobile" }
+  ],
+  "genres": [
+    { "id": 1, "name": "Action", "image_background": "https://example.com/action.jpg" },
+    { "id": 2, "name": "RPG", "image_background": "https://example.com/rpg.jpg" },
+    { "id": 3, "name": "Adventure", "image_background": "https://example.com/adventure.jpg" },
+    { "id": 4, "name": "Shooter", "image_background": "https://example.com/shooter.jpg" },
+    { "id": 5, "name": "Platformer", "image_background": "https://example.com/platformer.jpg" },
+    { "id": 6, "name": "Racing", "image_background": "https://example.com/racing.jpg" }
+  ]
+}
