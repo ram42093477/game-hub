@@ -11,8 +11,7 @@ interface Props {
 }
 
 const GameGrid = ({ gameQuery }: Props) => {
-  const { genre, platform } = gameQuery; // ✅ Extract genre and platform
-  const { error, data, isLoading } = useGames(genre, platform); // ✅ Pass them separately
+  const { error, data, isLoading } = useGames(gameQuery); // ✅ Pass the entire gameQuery object
 
   const Skeletons = [1, 2, 3, 4, 5, 6];
 
@@ -35,7 +34,7 @@ const GameGrid = ({ gameQuery }: Props) => {
         ))}
 
       {data?.length === 0 && !isLoading && (
-        <Text>No games found for this genre or platform.</Text>
+        <Text>No games found for this genre, platform, or sort order.</Text>
       )}
 
       {data?.map((game) => (
