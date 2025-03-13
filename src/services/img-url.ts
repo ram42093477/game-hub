@@ -1,13 +1,15 @@
-const getCroppedImageUrl = (url?: string) => {
+import noImage from "../assets/logo.webp";
+
+const getCroppedImageUrl = (url?: string): string => {
   if (!url) {
-    return "https://via.placeholder.com/600x400"; // Default placeholder image
+    return noImage; // ✅ Return the fallback image
   }
 
   const target = "media/";
   const index = url.indexOf(target);
 
   if (index === -1) {
-    return url; // Return the original URL if "media/" is not found
+    return url; // ✅ If "media/" isn't found, return original URL
   }
 
   return (
