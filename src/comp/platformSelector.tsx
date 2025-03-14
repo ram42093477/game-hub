@@ -19,7 +19,7 @@ function PlatformSelector({ onSelectPlatform, selectedPlatform }: Props) {
   const { data, error, isLoading } = usePlatforms();
 
   if (isLoading) return <Spinner />;
-  if (error) return <p>Error: {error}</p>;
+  if (error) return <p>Error loading platforms.</p>;
 
   return (
     <Menu>

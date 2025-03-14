@@ -11,7 +11,8 @@ import SortSelector from "./comp/SortSelector";
 export interface GameQuery {
   genre: Genres | null;
   platform: Platform | null;
-  sortOrder:string;
+  sortOrder: string;
+  searchText: string;
 }
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({
     genre: null,
     platform: null,
-    sortOrder:""
+    sortOrder: "",
+    searchText: "",
   });
 
   useEffect(() => {
@@ -46,7 +48,11 @@ function App() {
       }}
     >
       <GridItem area="nav" p={4}>
-        <NavBar />
+        <NavBar
+          onSearch={(searchText) =>
+            setGameQuery((prev) => ({ ...prev, searchText }))
+          }
+        />
       </GridItem>
 
       <GridItem area="aside" p={4} display={{ base: "none", lg: "block" }}>
@@ -66,11 +72,14 @@ function App() {
               setGameQuery((prev) => ({ ...prev, platform }))
             }
           />
-          <SortSelector onSelectSortOrder={(sortOrder)=>{
-            setGameQuery({...gameQuery,sortOrder})
-          }}/>
+          <SortSelector
+            selectedSortOrder={gameQuery.sortOrder}
+            onSelectSortOrder={(sortOrder) =>
+              setGameQuery((prev) => ({ ...prev, sortOrder }))
+            }
+          />
         </HStack>
-        <GameGrid gameQuery={gameQuery} /> {/* ✅ Fixed prop */}
+        <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
   );

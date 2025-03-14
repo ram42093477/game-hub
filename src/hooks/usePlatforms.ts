@@ -6,6 +6,6 @@ export interface Platform {
   slug: string;
 }
 
-const usePlatforms = () => useData<Platform>("platforms", {}, []); // ✅ Corrected endpoint
+const usePlatforms = () => useData<Platform>("platforms");
 
 export default usePlatforms;

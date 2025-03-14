@@ -10,19 +10,18 @@ interface Props {
 }
 
 function GameCard({ game }: Props) {
-  // ✅ Extract platforms safely
   const parentPlatforms = game.parent_platforms ?? [];
 
   return (
     <Card>
-      {/* ✅ Ensure correct image field is used */}
-      <Image src={getCroppedImageUrl(game.background_image)} alt={game.name} />
+      <Image
+        src={getCroppedImageUrl(game.background_image || "fallback-image-url")}
+        alt={game.name}
+      />
       <CardBody>
         <Heading fontSize="lg">{game.name}</Heading>
         <HStack justifyContent="space-between">
-          {/* ✅ Pass `parent_platforms` correctly */}
           <PlatFormIconList parent_platforms={parentPlatforms} />
-          {/* ✅ Ensure metacritic score has a fallback */}
           <CriticScore score={game.metacritic ?? 0} />
         </HStack>
       </CardBody>

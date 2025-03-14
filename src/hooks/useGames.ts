@@ -1,5 +1,5 @@
 import useData from "./useData";
-import { Genres } from "./useGenres";
+import { GameQuery } from "../App"; // Ensure this import is present
 import { Platform } from "./usePlatforms";
 
 export interface Game {
@@ -7,50 +7,42 @@ export interface Game {
   name: string;
   background_image: string;
   parent_platforms: { platform: Platform }[];
-  metacritic: number;
+  metacritic?: number;
   genre_ids: number[];
   released_date?: string;
   added_date?: string;
   rating?: number;
 }
 
-// ✅ Accepts `gameQuery` to handle sorting and filtering
-const useGames = (gameQuery: { genre: Genres | null; platform: Platform | null; sortOrder: string }) => {
+const useGames = (gameQuery: GameQuery) => {
   const { data = [], error, isLoading } = useData<Game>("games");
 
   console.log("Fetched games:", data);
-  console.log("Selected genre:", gameQuery.genre);
-  console.log("Selected platform:", gameQuery.platform);
-  console.log("Selected sort order:", gameQuery.sortOrder);
+  console.log("Game Query:", gameQuery);
 
-  // ✅ Filtering by genre & platform
   let filteredGames = data.filter((game) => {
     const matchesGenre = gameQuery.genre ? game.genre_ids?.includes(gameQuery.genre.id) : true;
     const matchesPlatform = gameQuery.platform
-      ? game.parent_platforms.some((p) => p.platform.id === gameQuery.platform?.id) // ✅ Safe null check
+      ? game.parent_platforms.some((p) => p.platform.id === gameQuery.platform?.id)
+      : true;
+    const matchesSearch = gameQuery.searchText
+      ? game.name.toLowerCase().includes(gameQuery.searchText.toLowerCase())
       : true;
 
-    return matchesGenre && matchesPlatform;
+    return matchesGenre && matchesPlatform && matchesSearch;
   });
 
-  // ✅ Sorting Logic
-  if (gameQuery.sortOrder) {
-    filteredGames = [...filteredGames].sort((a, b) => {
-      switch (gameQuery.sortOrder) {
-        case "-added":
-          return (new Date(b.added_date || 0).getTime()) - (new Date(a.added_date || 0).getTime());
-        case "-released":
-          return (new Date(b.released_date || 0).getTime()) - (new Date(a.released_date || 0).getTime());
-        case "-metacritic":
-          return (b.metacritic ?? 0) - (a.metacritic ?? 0);
-        case "-rating":
-          return (b.rating ?? 0) - (a.rating ?? 0);
-        case "name":
-          return a.name.localeCompare(b.name);
-        default:
-          return 0; // No sorting
-      }
-    });
+  // Sorting Logic with Better Fallbacks
+  const sortFunctions: Record<string, (a: Game, b: Game) => number> = {
+    "-added": (a, b) => (new Date(b.added_date ?? 0).getTime()) - (new Date(a.added_date ?? 0).getTime()),
+    "-released": (a, b) => (new Date(b.released_date ?? 0).getTime()) - (new Date(a.released_date ?? 0).getTime()),
+    "-metacritic": (a, b) => (b.metacritic ?? 0) - (a.metacritic ?? 0),
+    "-rating": (a, b) => (b.rating ?? 0) - (a.rating ?? 0),
+    "name": (a, b) => a.name.localeCompare(b.name),
+  };
+
+  if (gameQuery.sortOrder && sortFunctions[gameQuery.sortOrder]) {
+    filteredGames = [...filteredGames].sort(sortFunctions[gameQuery.sortOrder]);
   }
 
   return { data: filteredGames, error, isLoading };

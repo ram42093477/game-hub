@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 
+const API_BASE_URL = "http://localhost:3872"; // 🔹 Hardcoded API URL
+
 const useData = <T,>(endpoint: string, requestConfig: RequestInit = {}, deps: any[] = []) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
-  const API_URL = `http://localhost:3872/${endpoint}`;
 
   useEffect(() => {
-    console.log("Fetching from:", API_URL);
-
     const controller = new AbortController();
     setLoading(true);
 
-    fetch(API_URL, { ...requestConfig, signal: controller.signal })
+    fetch(`${API_BASE_URL}/${endpoint}`, { ...requestConfig, signal: controller.signal })
       .then((response) => {
         if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
         return response.json();

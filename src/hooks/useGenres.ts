@@ -7,14 +7,9 @@ export interface Genres {
 }
 
 const useGenres = () => {
-  const { data = [], error, isLoading } = useData<Genres>("genres");
-
-  console.log("Fetched genres:", data); // ✅ Debug API response
-  console.log("Loading status:", isLoading);
-  console.log("Error:", error);
-
-  return { data, error, isLoading };
+  return useData<Genres>("genres");
 };
 
 export default useGenres;
+
 
