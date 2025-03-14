@@ -1,4 +1,4 @@
-import { Provider } from "./components/ui/provider"; // Custom provider
+import { Provider } from "@chakra-ui/react/dist/types/provider/provider"; // Custom provider
 import React from "react";
 import ReactDOM from "react-dom/client"; // React 18 method for creating root
 import App from "./App"; // Main App component

@@ -7,7 +7,7 @@ import PlatformSelector from "./comp/platformSelector";
 import { Genres } from "./hooks/useGenres";
 import { Platform } from "./hooks/usePlatforms";
 import SortSelector from "./comp/SortSelector";
-import GameHeading from "./comp/gameHeading";
+import GameHeading from "./comp/GameHeading";
 
 export interface GameQuery {
   genre: Genres | null;
